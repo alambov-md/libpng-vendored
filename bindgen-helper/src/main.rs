@@ -1,13 +1,12 @@
-use std::{env::{temp_dir, var}, fs::{create_dir, write}, path::PathBuf};
+use std::{env::temp_dir, fs::write, path::PathBuf};
 
 use bindgen;
 use libpng_src::build_artifact;
 
-const MANUAL_BEGINNING: &str = 
-"#![allow(non_camel_case_types)]
+const MANUAL_BEGINNING: &str = "#![allow(non_camel_case_types)]
 #![allow(non_upper_case_globals)]
 #![allow(non_snake_case)]
-use libc::{FILE, time_t, tm};
+use libc::{time_t, tm, FILE};
 
 ";
 
