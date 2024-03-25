@@ -1,8 +1,18 @@
+[workspace] 
+
+members = ["bindgen-helper"] 
+
+[workspace.dependencies]
+libc = "0.2"
+libpng-src = "0.2"
+
 [package]
-name = "libpngstat-sys"
+name = "libpng-vendored"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+libc = { workspace = true }
+
+[build-dependencies]
+libpng-src = { workspace = true }
