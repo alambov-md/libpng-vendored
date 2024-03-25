@@ -1,6 +1,7 @@
 use std::{env::temp_dir, fs::write, path::PathBuf};
 
 use bindgen;
+use guess_host_triple::guess_host_triple;
 use libpng_src::build_artifact;
 
 const MANUAL_BEGINNING: &str = "#![allow(non_camel_case_types)]
@@ -11,9 +12,12 @@ use libc::{time_t, tm, FILE};
 ";
 
 fn main() {
+    let target = guess_host_triple()
+        .expect("Cannot detect this host target");
+
     let working_dir = temp_dir().join("bindgen-helper");
 
-    let artifact_info = build_artifact("aarch64-apple-darwin", &working_dir).unwrap();
+    let artifact_info = build_artifact(target, &working_dir).unwrap();
     let png_h_path = artifact_info.include_dir.join("png.h");
 
     let dest_path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
