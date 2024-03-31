@@ -8,13 +8,13 @@ libpng-src = "0.2"
 libz-sys = "=1.1.15"
 
 [package]
-name = "libpng-vendored"
+name = "libpng-vendored-sys"
 version = "0.1.0"
 authors = ["Alexandr Lambov <alex.lambov.md@gmail.com>"]
 edition = "2021"
 description = "Helper package for vendoring 'libpng' as a static library with rudimentary FFI bindings."
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/alambov-md/libpng-vendored"
+repository = "https://github.com/alambov-md/libpng-vendored-sys"
 
 [dependencies]
 libc = { workspace = true }

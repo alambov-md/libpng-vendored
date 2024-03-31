@@ -1,5 +1,5 @@
 #![allow(non_snake_case)]
-use libpng_vendored::{
+use libpng_vendored_sys::{
     png_image, PNG_FORMAT_FLAG_ALPHA, PNG_FORMAT_FLAG_COLOR, PNG_FORMAT_FLAG_COLORMAP,
     PNG_FORMAT_FLAG_LINEAR,
 };
@@ -14,14 +14,6 @@ pub fn PNG_IMAGE_SAMPLE_CHANNELS(fmt: u32) -> usize {
 
 pub fn PNG_IMAGE_SAMPLE_COMPONENT_SIZE(fmt: u32) -> usize {
     (((fmt & PNG_FORMAT_FLAG_LINEAR) >> 2) + 1) as usize
-}
-
-pub fn PNG_IMAGE_SAMPLE_SIZE(fmt: u32) -> usize {
-    PNG_IMAGE_SAMPLE_CHANNELS(fmt) * PNG_IMAGE_SAMPLE_COMPONENT_SIZE(fmt)
-}
-
-pub fn PNG_IMAGE_MAXIMUM_COLORMAP_COMPONENTS(fmt: u32) -> usize {
-    PNG_IMAGE_SAMPLE_CHANNELS(fmt) * 256
 }
 
 pub fn PNG_IMAGE_PIXEL_(test: impl FnOnce(u32) -> usize, fmt: u32) -> usize {
@@ -40,20 +32,12 @@ pub fn PNG_IMAGE_PIXEL_COMPONENT_SIZE(fmt: u32) -> usize {
     PNG_IMAGE_PIXEL_(PNG_IMAGE_SAMPLE_COMPONENT_SIZE, fmt)
 }
 
-pub fn PNG_IMAGE_PIXEL_SIZE(fmt: u32) -> usize {
-    PNG_IMAGE_PIXEL_(PNG_IMAGE_SAMPLE_SIZE, fmt)
-}
-
 pub fn PNG_IMAGE_ROW_STRIDE(image: &png_image) -> usize {
     PNG_IMAGE_PIXEL_CHANNELS(image.format) * (image.width as usize)
 }
 
 pub fn PNG_IMAGE_BUFFER_SIZE(image: &png_image, row_stride: usize) -> usize {
     PNG_IMAGE_PIXEL_COMPONENT_SIZE(image.format) * (image.height as usize) * row_stride
-}
-
-pub fn PNG_IMAGE_COLORMAP_SIZE(image: &png_image) -> usize {
-    PNG_IMAGE_SAMPLE_SIZE(image.format) * (image.colormap_entries as usize)
 }
 
 pub fn PNG_IMAGE_SIZE(image: &png_image) -> usize {

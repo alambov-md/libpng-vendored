@@ -7,7 +7,7 @@ use std::{
 
 use libc::c_void;
 
-use libpng_vendored::{
+use libpng_vendored_sys::{
     png_image, png_image_begin_read_from_file, png_image_begin_read_from_memory,
     png_image_finish_read, png_image_free, PNG_FORMAT_RGBA, PNG_IMAGE_VERSION,
 };
