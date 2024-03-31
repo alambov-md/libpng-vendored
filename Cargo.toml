@@ -9,7 +9,7 @@ libz-sys = "=1.1.15"
 
 [package]
 name = "libpng-vendored-sys"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Alexandr Lambov <alex.lambov.md@gmail.com>"]
 edition = "2021"
 description = "Helper package for vendoring 'libpng' as a static library with rudimentary FFI bindings."
