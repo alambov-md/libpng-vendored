@@ -7,13 +7,17 @@ use libpng_src::build_artifact;
 const MANUAL_BEGINNING: &str = "#![allow(non_camel_case_types)]
 #![allow(non_upper_case_globals)]
 #![allow(non_snake_case)]
+
 use libc::{time_t, tm, FILE};
+
+#[allow(unused_imports)]
+// Used for linking only
+use libz_sys;
 
 ";
 
 fn main() {
-    let target = guess_host_triple()
-        .expect("Cannot detect this host target");
+    let target = guess_host_triple().expect("Cannot detect this hosts target");
 
     let working_dir = temp_dir().join("bindgen-helper");
 
@@ -24,7 +28,7 @@ fn main() {
         .parent()
         .unwrap()
         .join("src")
-        .join("raw_ffi.rs");
+        .join("lib.rs");
 
     let bindings = bindgen::builder()
         .header(png_h_path.to_string_lossy())

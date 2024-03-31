@@ -5,6 +5,7 @@ members = ["bindgen-helper"]
 [workspace.dependencies]
 libc = "0.2"
 libpng-src = "0.2"
+libz-sys = "=1.1.15"
 
 [package]
 name = "libpng-vendored"
@@ -17,6 +18,7 @@ repository = "https://github.com/alambov-md/libpng-vendored"
 
 [dependencies]
 libc = { workspace = true }
+libz-sys = { workspace = true }
 
 [build-dependencies]
 libpng-src = { workspace = true }
