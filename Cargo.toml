@@ -1,8 +1,24 @@
-[package]
-name = "libpngstat-sys"
-version = "0.1.0"
-edition = "2021"
+[workspace] 
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+members = ["bindgen-helper"] 
+
+[workspace.dependencies]
+libc = "0.2"
+libpng-src = "0.2"
+libz-sys = "=1.1.15"
+
+[package]
+name = "libpng-vendored-sys"
+version = "0.1.0"
+authors = ["Alexandr Lambov <alex.lambov.md@gmail.com>"]
+edition = "2021"
+description = "Helper package for vendoring 'libpng' as a static library with rudimentary FFI bindings."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/alambov-md/libpng-vendored-sys"
 
 [dependencies]
+libc = { workspace = true }
+libz-sys = { workspace = true }
+
+[build-dependencies]
+libpng-src = { workspace = true }
