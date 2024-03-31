@@ -15,6 +15,7 @@ edition = "2021"
 description = "Helper package for vendoring 'libpng' as a static library with rudimentary FFI bindings."
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/alambov-md/libpng-vendored-sys"
+links = "png"
 
 [dependencies]
 libc = { workspace = true }
