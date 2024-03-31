@@ -4,7 +4,7 @@ members = ["bindgen-helper"]
 
 [workspace.dependencies]
 libc = "0.2"
-libpng-src = "0.2"
+libpng-src = { git = "https://github.com/alambov-md/libpng-src.git", branch = "LEP-9" }
 libz-sys = "=1.1.15"
 
 [package]
