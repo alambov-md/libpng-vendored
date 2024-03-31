@@ -1,5 +1,5 @@
 # libpng-vendored-sys
-Cargo package for compiling [libpng](https://github.com/pnggroup/libpng) and vendoring as **static** library. 
+Cargo package for compiling [libpng](https://github.com/pnggroup/libpng) and vendoring it as **static** library. 
 
 Main goal of the package is providing static library for linking with other C code, like versions of [Leptonica](http://www.leptonica.org/).
 This package provides just rudimentary FFI bindings. More sophisticated bindings would be proveded in separate package. If you need to bind `libpng` with the Rust code directly, you should write your own bindings.
